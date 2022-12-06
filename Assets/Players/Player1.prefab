@@ -314,12 +314,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8582e6afc1ff4754698792ba83d42bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walking_speed: 5
-  running_speed: 10
+  walking_speed: 10
+  running_speed: 15
   player_speed: 0
   is_running: 0
-  max_sprint: 5
-  sprint_meter: 5
+  max_sprint: 10
+  sprint_meter: 10
   is_recovering: 0
   rotation: 0
   rotation_speed: 1

@@ -46,11 +46,11 @@ public class EnemyAI_patients : MonoBehaviour
 
     float knows_location_for = 0f;
 
+    public LayerMask walkable_layers;
     public bool blocked;
 
     public Vector3 direction;
 
-    private UnityEngine.AI.NavMeshHit hit;
 
     // Start is called before the first frame update
     void Start()
@@ -117,8 +117,8 @@ public class EnemyAI_patients : MonoBehaviour
             random_patrol.y = transform.position.y;
             random_patrol.z = Random.Range(transform.position.z - patrol_range, transform.position.z + patrol_range);
 
-            blocked = UnityEngine.AI.NavMesh.Raycast(transform.position, random_patrol, out hit, UnityEngine.AI.NavMesh.AllAreas);
-            Debug.DrawLine(transform.position, random_patrol, blocked ? Color.red : Color.green);
+            blocked = Physics.Raycast(random_patrol, -transform.up, 2f, walkable_layers);
+            blocked = !blocked;
 
             if (!blocked)
             {
