@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e796f37300d1e74781e0ea8d2ab6482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrol_points: []
+  choosing_patrol: 1
   agent: {fileID: 748384465426232860}
   location: {x: 47.280754, y: 0, z: 37.433853}
   player: {fileID: 0}
@@ -362,9 +362,12 @@ MonoBehaviour:
   patrol_distance: 0
   interest_time: 1
   patrol_time: 0
-  patrol_recovery_time: 20
+  patrol_recovery_time: 10
   random_chosen: 0
+  random_patrol: {x: 0, y: 0, z: 0}
   my_anim: {fileID: 478404542123379412}
+  patrol_range: 20
+  blocked: 0
 --- !u!195 &748384465426232860
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -375,7 +378,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360

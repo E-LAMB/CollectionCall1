@@ -38,15 +38,25 @@ public class EnemyAI_patients : MonoBehaviour
     public float patrol_time = 0f; // The time since the last patrol point was set
     public float patrol_recovery_time = 20f; // The maximum time the enemy takes before it chooses another patrol point
     public int random_chosen;
+    public Vector3 random_patrol;
 
     public Animator my_anim;
 
+    public float patrol_range = 10f;
+
     float knows_location_for = 0f;
+
+    public bool blocked;
+
+    public Vector3 direction;
+
+    private UnityEngine.AI.NavMeshHit hit;
 
     // Start is called before the first frame update
     void Start()
     {
         player_exposer = GameObject.Find("Exposer");
+        location = transform.position;
     }
 
     public void KnowsLocation(float knowledge_time)
@@ -71,11 +81,11 @@ public class EnemyAI_patients : MonoBehaviour
         }
 
         Vector3 origin = transform.position;
-        Vector3 direction = transform.forward;
+        direction = transform.forward;
 
         shoot_position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
 
-        direction = (transform.position - player.position).normalized;
+        direction = (transform.position - player.position);
         direction = direction * -1f;
 
         player_distance = Vector3.Distance(transform.position, player.position);
@@ -98,26 +108,43 @@ public class EnemyAI_patients : MonoBehaviour
             interest_time = 5f;
         }
 
-        if (patrol_time <= 0f && interest_time <= 0f)
+        if (patrol_time <= 0f && interest_time <= 0f && choosing_patrol == true)
         {
 
-            random_chosen = Random.Range(0, patrol_points.Length);
+            choosing_patrol = true;
 
-            location = patrol_points[random_chosen];
+            random_patrol.x = Random.Range(transform.position.x - patrol_range, transform.position.x + patrol_range);
+            random_patrol.y = transform.position.y;
+            random_patrol.z = Random.Range(transform.position.z - patrol_range, transform.position.z + patrol_range);
 
-            patrol_time = patrol_recovery_time;
+            blocked = UnityEngine.AI.NavMesh.Raycast(transform.position, random_patrol, out hit, UnityEngine.AI.NavMesh.AllAreas);
+            Debug.DrawLine(transform.position, random_patrol, blocked ? Color.red : Color.green);
+
+            if (!blocked)
+            {
+                location = random_patrol;
+                patrol_time = patrol_recovery_time;
+                choosing_patrol = false;
+            }
+            
         }
 
         if (patrol_distance < 5f)
         {
             patrol_time = -1f;
+            choosing_patrol = true;
+        }
+
+        if (patrol_time < -1f)
+        {
+            choosing_patrol = false;
         }
 
         if (interest_time >= 0f)
         {
             interest_time -= Time.deltaTime;
         }
-        if (patrol_time >= 0f)
+        if (patrol_time >= -2f)
         {
             patrol_time -= Time.deltaTime;
         }
