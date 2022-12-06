@@ -43,7 +43,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8018868, g: 0.42868158, b: 0.42868158, a: 1}
   m_Intensity: 3
   m_Range: 20
   m_SpotAngle: 41
@@ -125,6 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3443310743899573854}
+  - component: {fileID: 1655614185046311826}
   m_Layer: 0
   m_Name: LampTrap
   m_TagString: Untagged
@@ -147,3 +148,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1655614185046311826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443310743899573855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d1a172093c01148a63001c5dd00768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start_location: {x: 45, y: 0, z: 147.5}
+  end_location: {x: -45, y: 0, z: 147.5}
+  target: {x: 0, y: 0, z: 0}
+  moving_StoE: 0
+  speed: 4
+  self: {fileID: 3443310743899573854}
+  distance: 0
