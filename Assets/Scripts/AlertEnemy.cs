@@ -19,7 +19,7 @@ public class AlertEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GameObject.Find("Enemy");   
+        enemy = GameObject.Find("Photographer");   
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class AlertEnemy : MonoBehaviour
 
         if (cooldown <= 0 && player_in_range == true)
         {
-            enemy.GetComponent<EnemyAI>().KnowsLocation(3f);
+            enemy.GetComponent<Enemy_AI_Photographer>().AlertedToLocation(3f);
             cooldown = 10f;
         }
 

@@ -164,6 +164,6 @@ MonoBehaviour:
   end_location: {x: -45, y: 0, z: 147.5}
   target: {x: 0, y: 0, z: 0}
   moving_StoE: 0
-  speed: 4
+  speed: 6
   self: {fileID: 3443310743899573854}
   distance: 0
