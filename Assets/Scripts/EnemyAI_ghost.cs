@@ -5,33 +5,28 @@ using UnityEngine;
 public class EnemyAI_ghost : MonoBehaviour
 {
 
-    public UnityEngine.AI.NavMeshAgent agent;
-
     public Vector3 location;
 
-    public Transform player;
+    public float bounds;
+    public Transform self;
 
-    public GameObject player_object;
+    public float patience = 60f; // How long the ghost remains patient for
 
-    public int ghost_state;
-    // 1 = stalking
-    // 2 = hunting
+    void FindNewPlace()
+    {
 
-    public float hunting_time = 10f;
-    public float max_hunting_time = 0f;
-    public float stalking_time = 40f;
-    public float finding_stalk_delay = 10f;
+        location.x = Random.Range(bounds * -1, bounds);
+        location.z = Random.Range(bounds * -1, bounds);
 
-    public Transform facing_direction;
+        location.y = self.position.y;
 
-    public Material ghost_material;
-    Vector4 transparency_colour;
+        self.position = location;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         
-        ghost_state = 1;
 
     }
 
@@ -39,16 +34,13 @@ public class EnemyAI_ghost : MonoBehaviour
     void Update()
     {
 
-        if (ghost_state == 1)
+        if (patience < 0f)
         {
-            float random_flicker = Random.Range(0f,0.7f);
-            transparency_colour = new Vector4(1f,1f,1f,random_flicker);
-            ghost_material.color = transparency_colour;
-        }   else
-        {
-            transparency_colour = new Vector4(1f,1f,1f,1f);
-            ghost_material.color = transparency_colour;
+            FindNewPlace();
+            patience = 45f;
         }
-  
+
+        patience -= Time.deltaTime;
+
     }
 }

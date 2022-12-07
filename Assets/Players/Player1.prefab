@@ -160,7 +160,7 @@ Camera:
   m_GameObject: {fileID: 8738183824332405331}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -421,7 +421,7 @@ MonoBehaviour:
   rotation: 0
   rotation_speed: 1
   cam_rotation: 0
-  cam_rotation_speed: 1
+  cam_rotation_speed: 2
   ground_detector: {fileID: 5637692473355775477}
   ground_is:
     serializedVersion: 2

@@ -6592,7 +6592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 799149837198286644, guid: 4ca4dde950c369549bb2096ffa1aeb0a, type: 3}
       propertyPath: m_AngularSpeed
-      value: 360
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 4981096073888893357, guid: 4ca4dde950c369549bb2096ffa1aeb0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6607,9 +6607,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1518089468}
     - target: {fileID: 7267981279341170265, guid: 4ca4dde950c369549bb2096ffa1aeb0a, type: 3}
+      propertyPath: normal_speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267981279341170265, guid: 4ca4dde950c369549bb2096ffa1aeb0a, type: 3}
       propertyPath: player_object
       value: 
       objectReference: {fileID: 1518089462}
+    - target: {fileID: 7267981279341170265, guid: 4ca4dde950c369549bb2096ffa1aeb0a, type: 3}
+      propertyPath: rushing_speed
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8781909648858701412, guid: 4ca4dde950c369549bb2096ffa1aeb0a, type: 3}
       propertyPath: m_RootOrder
       value: 13

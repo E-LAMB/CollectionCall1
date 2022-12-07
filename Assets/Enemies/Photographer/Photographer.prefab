@@ -1122,7 +1122,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 3600
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1143,6 +1143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb8514383b1b8041a5a3785f3d3ba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving_speed: 0
+  normal_speed: 7
+  rushing_speed: 15
+  rushing_max_time: 10
+  rushing_time: 0
   patrol_points:
   - {x: -45, y: 0, z: 60}
   - {x: 45, y: 0, z: 60}
