@@ -16,6 +16,11 @@ public class EnemyAI_ghost : MonoBehaviour
     public float patience = 45f;
     public float max_patience = 45f; // How long the ghost remains patient for
 
+    public float distance;
+    public bool in_range;
+
+    public GameObject summonable;
+
     void FindNewPlace()
     {
 
@@ -41,6 +46,12 @@ public class EnemyAI_ghost : MonoBehaviour
 
         if (patience < 0f)
         {
+
+            Vector3 summon_position = self.position;
+            Quaternion summon_rotation = self.rotation;
+
+            Instantiate(summonable, summon_position, summon_rotation);
+
             FindNewPlace();
 
             if (!Physics.CheckSphere(location,3f,walls))
@@ -66,7 +77,9 @@ public class EnemyAI_ghost : MonoBehaviour
             patience = max_patience;
         }
 
-        if (Physics.CheckSphere(self.position,10f,player))
+        in_range = Physics.CheckSphere(self.position,distance,player);
+
+        if (in_range)
         {
             patience = max_patience;
             FindNewPlace();
