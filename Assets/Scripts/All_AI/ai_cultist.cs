@@ -39,8 +39,6 @@ public class ai_cultist : MonoBehaviour
     public int random_chosen;
     public Vector3 random_patrol;
 
-    public Animator my_anim;
-
     public float patrol_range = 10f;
 
     float knows_location_for = 0f;
@@ -49,7 +47,19 @@ public class ai_cultist : MonoBehaviour
     public bool blocked;
 
     public Vector3 direction;
+    public float teleport_requirement = 50f;
+    public float walk_speed = 5f;
 
+    public ParticleSystem teleport_effect;
+    public float teleport_cooldown;
+    public float max_teleport_cooldown = 30f;
+    public bool teleported = true;
+    public float teleport_delay;
+    public float disappearance_time;
+
+    public Transform self;
+    public Vector3 teleport_shadow_realm; // Where it goes during teleportation
+    public Vector3 teleport_location;
 
     // Start is called before the first frame update
     void Start()
@@ -63,9 +73,27 @@ public class ai_cultist : MonoBehaviour
     {
 
         knows_location_for = knowledge_time;
-		interest_time = 10f;
+		interest_time = 2f;
 		patrol_time = patrol_recovery_time;
 		location = player.position;
+
+        if (player_distance > teleport_requirement && teleport_cooldown <= 0f)
+        {
+            teleports_to_location();
+        }
+
+    }
+
+    public void teleports_to_location()
+    {
+
+        teleport_location = player.position;
+        teleport_effect.Play();
+        teleport_cooldown = max_teleport_cooldown;
+        teleported = false;
+        agent.speed = 0f;
+        teleport_delay = 3f;
+        disappearance_time = 1.1f;
 
     }
 
@@ -147,6 +175,34 @@ public class ai_cultist : MonoBehaviour
         {
             patrol_time -= Time.deltaTime;
         }
+
+        if (teleport_cooldown >= -2f)
+        {
+            teleport_cooldown -= Time.deltaTime;
+        }
+
+        if (disappearance_time >= -1f)
+        {
+            disappearance_time -= Time.deltaTime;
+        }
+
+        if (disappearance_time <= 0f && teleported == false)
+        {
+            self.position = teleport_shadow_realm;
+        }
+        
+        if (teleport_delay >= 0f)
+        {
+            teleport_delay -= Time.deltaTime;
+        } 
+        if (teleport_delay <= 0f && teleported == false)
+        {
+            teleport_location.y = 0f;
+            self.position = teleport_location;
+            teleported = true;
+            agent.speed = walk_speed;
+        }
+
 
         agent.SetDestination(location);
 

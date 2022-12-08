@@ -5093,8 +5093,9 @@ MonoBehaviour:
     m_Bits: 64
   patience: 45
   max_patience: 45
-  distance: 0
+  distance: 5
   in_range: 0
+  found_location: 0
   teleport_space_safe_ray: 0
   teleport_space_safe_sphere: 0
   summonable: {fileID: 1717371952785283784, guid: 9d442916c7b63e74f928450b9b5f6f97, type: 3}
