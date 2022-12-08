@@ -5044,7 +5044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149521130427084469}
-  - component: {fileID: 8149521130427084470}
+  - component: {fileID: 3217895902678237795}
   m_Layer: 0
   m_Name: Summonable_Ghost
   m_TagString: Untagged
@@ -5067,7 +5067,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8149521130427084470
+--- !u!114 &3217895902678237795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5076,20 +5076,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8149521130427084468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075064e02f353b046968222ab6c296ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 20e4f79362a59ab409389dec6f62b822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   location: {x: 0, y: 0, z: 0}
-  bounds: 95
+  bounds: 90
   self: {fileID: 8149521130427084469}
-  walls:
+  wall_layer:
     serializedVersion: 2
     m_Bits: 256
+  ground_layer:
+    serializedVersion: 2
+    m_Bits: 128
   player:
     serializedVersion: 2
     m_Bits: 64
   patience: 45
-  max_patience: 30
-  distance: 5
+  max_patience: 45
+  distance: 0
   in_range: 0
+  teleport_space_safe_ray: 0
+  teleport_space_safe_sphere: 0
   summonable: {fileID: 1717371952785283784, guid: 9d442916c7b63e74f928450b9b5f6f97, type: 3}
