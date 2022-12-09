@@ -5046,7 +5046,7 @@ GameObject:
   - component: {fileID: 8149521130427084469}
   - component: {fileID: 3217895902678237795}
   m_Layer: 0
-  m_Name: Summonable_Ghost
+  m_Name: Summonable_Ghost1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
