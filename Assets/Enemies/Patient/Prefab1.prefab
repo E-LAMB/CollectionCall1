@@ -304,8 +304,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748384465426232866}
-  - component: {fileID: 748384465426232861}
   - component: {fileID: 748384465426232860}
+  - component: {fileID: 8098484172829672830}
   m_Layer: 0
   m_Name: Prefab1
   m_TagString: Untagged
@@ -328,50 +328,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &748384465426232861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748384465426232863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e796f37300d1e74781e0ea8d2ab6482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choosing_patrol: 1
-  agent: {fileID: 748384465426232860}
-  location: {x: 47.280754, y: 0, z: 37.433853}
-  player: {fileID: 0}
-  player_exposer: {fileID: 0}
-  player_object: {fileID: 0}
-  ray_hits_player: 0
-  ray_hits_collision: 0
-  seek_layers:
-    serializedVersion: 2
-    m_Bits: 64
-  blocked_layers:
-    serializedVersion: 2
-    m_Bits: 384
-  max_distance: 2000
-  moving_enabled: 0
-  max_sight: 200
-  shoot_position: {x: 0, y: 0, z: 0}
-  player_distance: 0
-  patrol_distance: 0
-  interest_time: 1
-  patrol_time: 0
-  patrol_recovery_time: 10
-  random_chosen: 0
-  random_patrol: {x: 0, y: 0, z: 0}
-  my_anim: {fileID: 478404542123379412}
-  patrol_range: 50
-  walkable_layers:
-    serializedVersion: 2
-    m_Bits: 128
-  blocked: 0
-  direction: {x: 0, y: 0, z: 0}
 --- !u!195 &748384465426232860
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -394,6 +350,50 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8098484172829672830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748384465426232863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712f78d02b5b24c43829212d5c7499ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choosing_patrol: 1
+  agent: {fileID: 748384465426232860}
+  location: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  player_exposer: {fileID: 0}
+  player_object: {fileID: 0}
+  ray_hits_player: 0
+  ray_hits_collision: 0
+  seek_layers:
+    serializedVersion: 2
+    m_Bits: 64
+  blocked_layers:
+    serializedVersion: 2
+    m_Bits: 256
+  max_distance: 2000
+  moving_enabled: 0
+  max_sight: 200
+  shoot_position: {x: 0, y: 0, z: 0}
+  player_distance: 0
+  patrol_distance: 0
+  interest_time: 1
+  patrol_time: 0
+  patrol_recovery_time: 20
+  random_chosen: 0
+  random_patrol: {x: 0, y: 0, z: 0}
+  my_anim: {fileID: 478404542123379412}
+  patrol_range: 25
+  walkable_layers:
+    serializedVersion: 2
+    m_Bits: 128
+  blocked: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1421893407371228649
 GameObject:
   m_ObjectHideFlags: 0

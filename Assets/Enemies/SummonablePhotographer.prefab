@@ -1116,7 +1116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9154340447458862142}
   - component: {fileID: 991489989500544366}
-  - component: {fileID: 7063986286135817219}
+  - component: {fileID: 4974525246940022139}
   m_Layer: 0
   m_Name: SummonablePhotographer
   m_TagString: Untagged
@@ -1161,7 +1161,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7063986286135817219
+--- !u!114 &4974525246940022139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1170,24 +1170,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9154340447458862143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb8514383b1b8041a5a3785f3d3ba31, type: 3}
+  m_Script: {fileID: 11500000, guid: ef83f9e96aad46f4fbf7d19ca3afd390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving_speed: 0
-  normal_speed: 6
-  rushing_speed: 9
-  rushing_max_time: 10
-  rushing_time: 0
-  patrol_points:
-  - {x: -45, y: 0, z: 60}
-  - {x: 45, y: 0, z: 60}
-  - {x: -45, y: 0, z: 150}
-  - {x: 45, y: 0, z: 150}
-  - {x: -45, y: 0, z: 105}
-  - {x: 45, y: 0, z: 105}
-  - {x: 0, y: 0, z: 105}
-  - {x: 0, y: 0, z: 150}
-  - {x: 0, y: 0, z: 60}
+  choosing_patrol: 1
   agent: {fileID: 991489989500544366}
   location: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
@@ -1196,7 +1182,7 @@ MonoBehaviour:
   ray_hits_collision: 0
   seek_layers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   blocked_layers:
     serializedVersion: 2
     m_Bits: 256
@@ -1210,7 +1196,14 @@ MonoBehaviour:
   patrol_time: 0
   patrol_recovery_time: 20
   random_chosen: 0
-  facing_direction: {fileID: 9154340447458862142}
+  random_patrol: {x: 0, y: 0, z: 0}
+  my_anim: {fileID: 5241878525036144975}
+  patrol_range: 100
+  walkable_layers:
+    serializedVersion: 2
+    m_Bits: 128
+  blocked: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &9154340448228638379
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,12 +26,12 @@ public class PlayerExposer : MonoBehaviour
 
         if (is_exposed == true)
         {
-            patient_1.GetComponent<EnemyAI_patients>().KnowsLocation(2f);
-            patient_2.GetComponent<EnemyAI_patients>().KnowsLocation(2f);
-            patient_3.GetComponent<EnemyAI_patients>().KnowsLocation(2f);
-            patient_4.GetComponent<EnemyAI_patients>().KnowsLocation(2f);
-            patient_5.GetComponent<EnemyAI_patients>().KnowsLocation(2f);
-            patient_6.GetComponent<EnemyAI_patients>().KnowsLocation(2f);
+            patient_1.GetComponent<ai_patient>().KnowsLocation(2f);
+            patient_2.GetComponent<ai_patient>().KnowsLocation(2f);
+            patient_3.GetComponent<ai_patient>().KnowsLocation(2f);
+            patient_4.GetComponent<ai_patient>().KnowsLocation(2f);
+            patient_5.GetComponent<ai_patient>().KnowsLocation(2f);
+            patient_6.GetComponent<ai_patient>().KnowsLocation(2f);
 
             is_exposed = false;
         }
