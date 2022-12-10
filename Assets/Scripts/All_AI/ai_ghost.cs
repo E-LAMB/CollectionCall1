@@ -24,6 +24,10 @@ public Vector3 location;
     public bool teleport_space_safe_sphere;
 
     public GameObject summonable;
+    public Vector3 hidden_offset;
+
+    public float testing_position_y;
+    public float wall_range;
 
     void FindNewPlace()
     {
@@ -32,18 +36,17 @@ public Vector3 location;
         location.z = Random.Range(bounds * -1, bounds);
 
         location.y = self.position.y;
+        location.y += testing_position_y;
 
         teleport_space_safe_ray = Physics.Raycast(location,-transform.up,5f,ground_layer);
         Debug.DrawRay(location, -transform.up);
-        teleport_space_safe_sphere = Physics.CheckSphere(location,3f,wall_layer);
+        teleport_space_safe_sphere = Physics.CheckSphere(location,wall_range,wall_layer);
 
         if (teleport_space_safe_ray == true && teleport_space_safe_sphere == false)
         {
-            Vector3 summon_position = self.position;
-            Quaternion summon_rotation = self.rotation;
-            Instantiate(summonable, summon_position, summon_rotation);
             
             found_location = true;
+            location.y -= testing_position_y;
             patience = max_patience;
             self.position = location;
         } 
@@ -55,6 +58,7 @@ public Vector3 location;
     {
         
         FindNewPlace();
+        found_location = true;
 
     }
 
@@ -65,9 +69,20 @@ public Vector3 location;
         if (patience < 0f)
         {
 
-            found_location = false;
+            Vector3 summon_position = self.position;
+            Quaternion summon_rotation = self.rotation;
 
-            FindNewPlace();
+            summon_position.x += Random.Range(-5f,5f);
+            summon_position.z += Random.Range(-5f,5f);
+            Instantiate(summonable, summon_position, summon_rotation);
+
+            summon_position.x += Random.Range(-5f,5f);
+            summon_position.z += Random.Range(-5f,5f);
+            Instantiate(summonable, summon_position, summon_rotation);
+
+            self.position = self.position + hidden_offset;
+
+            found_location = false;
 
         }
 
@@ -77,10 +92,18 @@ public Vector3 location;
         {
 
             found_location = false;
+            
+        }
+
+        if (found_location == false)
+        {
             FindNewPlace();
         }
 
-        patience -= Time.deltaTime;
+        if (found_location == true)
+        {
+            patience -= Time.deltaTime;
+        }
 
     }
 }
