@@ -2,28 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LegsMoving : MonoBehaviour
+public class KneesMoving : MonoBehaviour
 {
 
     public Transform my_location;
     public Vector3 wanting_location;
-    public Transform target_location;
+    public Transform lower_leg;
+    public Vector3 offset;
+    public Transform pilot_knee;
 
     public float acceptable_distance = 1f;
     public float actual_distance;
 
-    public float speed = 0.1f;
+    public float speed = 1f;
 
     public bool should_be_active = false;
-    public GameObject my_parent; 
 
     public float grace = 1f;
+
+    public void set_state(bool state_set)
+    {
+        should_be_active = state_set;
+    }
+
+    public bool request_state()
+    {
+        return should_be_active;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         my_location = GetComponent<Transform>();
-        my_location.position = target_location.position;   
+        my_location.position = lower_leg.position; 
     }
 
     // Update is called once per frame
@@ -34,17 +45,19 @@ public class LegsMoving : MonoBehaviour
         {
             grace -= Time.deltaTime;
 
-            wanting_location = target_location.position;
+            wanting_location = lower_leg.position + pilot_knee.position;
+            wanting_location = wanting_location / 2;   
+            wanting_location += offset;
             my_location.position = Vector3.MoveTowards(my_location.position, wanting_location, 2000f);
         }
 
-        should_be_active = my_parent.GetComponent<KneesMoving>().request_state();
-
-        actual_distance = Vector3.Distance(my_location.position, target_location.position);
+        actual_distance = Vector3.Distance(my_location.position, lower_leg.position);
 
         if (actual_distance > acceptable_distance)
         {
-            wanting_location = target_location.position;   
+            wanting_location = lower_leg.position + pilot_knee.position;
+            wanting_location = wanting_location / 2;   
+            wanting_location += offset;
         }
 
         if (should_be_active)
