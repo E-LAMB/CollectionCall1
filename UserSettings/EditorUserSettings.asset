@@ -6,34 +6,34 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
-      value: 22424703114646680e0b0227036c6f11041c2706293e233c633c133af6f9
-      flags: 0
-    RecentlyUsedScenePath-1:
       value: 22424703114646680e0b0227036c7e2235363c0f01070215621a1e3bedef3876f7e93ffdfe
       flags: 0
-    RecentlyUsedScenePath-2:
+    RecentlyUsedScenePath-1:
       value: 22424703114646680e0b0227036c703c3258282b3e23191c283f183facf53a31f6fe
       flags: 0
-    RecentlyUsedScenePath-3:
+    RecentlyUsedScenePath-2:
       value: 22424703114646680e0b0227036c703c325830253f382f242c25221fe7f63134acf238e0f323
       flags: 0
-    RecentlyUsedScenePath-4:
+    RecentlyUsedScenePath-3:
       value: 22424703114646680e0b0227036c703c32582f2b3e2d2e3f383a180ccee5223deea923e7ee2e26
       flags: 0
-    RecentlyUsedScenePath-5:
-      value: 22424703114646680e0b0227036c703c32583b222d38233c12051825e7ec7a2decee22f0
-      flags: 0
-    RecentlyUsedScenePath-6:
+    RecentlyUsedScenePath-4:
       value: 22424703114646680e0b0227036c7135213b3d1c0904157f1e2a153cedec7a2decee22f0
       flags: 0
-    RecentlyUsedScenePath-7:
+    RecentlyUsedScenePath-5:
       value: 22424703114646720318093003261f3b1f191d272d3c2f333e662e30e7ee312badc624e4a92f31352d1b
       flags: 0
+    RecentlyUsedScenePath-6:
+      value: 22424703114646680e0b0227036c0d405b24082b3e2d02222828101ce0f3312bf1ee39e7a92f31352d1b
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 22424703114646680e0b0227036c703c32583b222d38233c12051825e7ec7a2decee22f0
+      flags: 0
     RecentlyUsedScenePath-8:
-      value: 22424703114646680e0b0227036c095d30180a2f3f3c68252320092a
+      value: 22424703114646680e0b0227036c0a5d32160a21293b320222261062acf53a31f6fe
       flags: 0
     RecentlyUsedScenePath-9:
-      value: 22424703114646680e0b0227036c0d405b24082b3e2d02222828101ce0f3312bf1ee39e7a92f31352d1b
+      value: 22424703114646680e0b0227036c095d30180a2f3f3c68252320092a
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
