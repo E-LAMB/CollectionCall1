@@ -37,15 +37,27 @@ public class ai_ghost : MonoBehaviour
     public Vector3 zero;
     public float zero_distance;
 
+    public int chances = 3; // You can miss her game only three times
+
     public bool summoned;
+    public bool killing_player = false; // If the ghost is currently killing the player
+
+    public GameObject evil_me;
+
+    public int chance_query()
+    {
+        return chances;
+    }
 
     void FindNewPlace()
     {
 
+        location = zero;
+
         location.x = Random.Range(bounds * -1, bounds);
         location.z = Random.Range(bounds * -1, bounds);
 
-        location.y = self.position.y;
+        location.y = 0f;
         location.y += testing_position_y;
 
         teleport_space_safe_ray = Physics.Raycast(location,-transform.up,5f,ground_layer);
@@ -90,41 +102,57 @@ public class ai_ghost : MonoBehaviour
     void Update()
     {
 
-        if (patience < 0f && summoned == false)
+        if (chances == 0)
         {
-
-            summoned = true;
-            Vector3 summon_position = self.position;
-            Quaternion summon_rotation = self.rotation;
-
-            Instantiate(summonable, summon_position, summon_rotation);
-
-            player_transform.position = zero;
-
-            self.position = self.position + hidden_offset;
-
-            found_location = false;
-
+            killing_player = true;
         }
 
-        in_range = Physics.CheckSphere(self.position,distance,player);
-
-        if (in_range && Input.GetKeyDown(KeyCode.E))
+        if (killing_player == false)
         {
 
-            found_location = false;
-            
+            if (patience < 0f && summoned == false)
+            {
+
+                summoned = true;
+                Vector3 summon_position = self.position;
+                Quaternion summon_rotation = self.rotation;
+
+                Instantiate(summonable, summon_position, summon_rotation);
+
+                chances -= 1;
+
+                self.position = self.position + hidden_offset;
+
+                found_location = false;
+
+            }
+
+            in_range = Physics.CheckSphere(self.position,distance,player);
+
+            if (in_range && Input.GetKeyDown(KeyCode.E))
+            {
+
+                found_location = false;
+                
+            }
+
+            if (found_location == false)
+            {
+                FindNewPlace();
+            }
+
+            if (found_location == true)
+            {
+                patience -= Time.deltaTime;
+            }
+        } else
+        {
+            zero.y = -25f;
+            self.position = zero;
+            evil_me.GetComponent<ai_demon_ghost>().ghost_death();
+            player_object.GetComponent<PlayerController>().change_control_state(false);
         }
 
-        if (found_location == false)
-        {
-            FindNewPlace();
-        }
-
-        if (found_location == true)
-        {
-            patience -= Time.deltaTime;
-        }
 
     }
 }

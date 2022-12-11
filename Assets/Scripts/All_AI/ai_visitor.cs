@@ -14,8 +14,10 @@ public class ai_visitor : MonoBehaviour
     public float fade_result;
     public Material material_used;
     public GameObject body;
+    public GameObject myself;
+    public GameObject ghost;
 
-    public Animator controller;
+    public int player_chances;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,19 @@ public class ai_visitor : MonoBehaviour
         player_object = GameObject.Find("Player");
         player_location = player_object.GetComponent<Transform>();
         fade_sector = 1 / fade;
-        material_used = body.GetComponent<SkinnedMeshRenderer>().material;
+        material_used = body.GetComponent<MeshRenderer>().material;
+        ghost = GameObject.Find("StoryMode_Ghost");
     }
 
     // Update is called once per frame
     void Update()
     {
+        player_chances = ghost.GetComponent<ai_ghost>().chance_query();
+
+        if (player_chances == 0)
+        {
+            Destroy(myself);
+        }
         
         if (fade >= 0f)
         {
@@ -44,7 +53,6 @@ public class ai_visitor : MonoBehaviour
 
         if (fade < 0)
         {
-            controller.SetBool("CompleteAppearance",true);
             agent.SetDestination(location);
         }
 

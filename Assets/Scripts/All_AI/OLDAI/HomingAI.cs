@@ -24,7 +24,7 @@ public class HomingAI : MonoBehaviour
         player_object = GameObject.Find("Player");
         player_location = player_object.GetComponent<Transform>();
         fade_sector = 1 / fade;
-        material_used = body.GetComponent<SkinnedMeshRenderer>().material;
+        material_used = body.GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
