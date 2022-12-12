@@ -39,8 +39,6 @@ public class ai_stalker : MonoBehaviour
     public int random_chosen;
     public Vector3 random_patrol;
 
-    public Animator my_anim;
-
     public float patrol_range = 10f;
 
     float knows_location_for = 0f;
@@ -48,8 +46,10 @@ public class ai_stalker : MonoBehaviour
     public LayerMask walkable_layers;
     public bool blocked;
 
-    public Vector3 direction;
+    int patrol_int_x; 
+    int patrol_int_y;
 
+    public Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -103,7 +103,7 @@ public class ai_stalker : MonoBehaviour
 
         if (ray_hits_player == true && ray_hits_collision == false)
         {
-            KnowsLocation(1f);
+            KnowsLocation(2f);
             interest_time = 5f;
         }
 
@@ -112,19 +112,25 @@ public class ai_stalker : MonoBehaviour
 
             choosing_patrol = true;
 
-            random_patrol.x = Random.Range(transform.position.x - patrol_range, transform.position.x + patrol_range);
-            random_patrol.y = transform.position.y;
-            random_patrol.z = Random.Range(transform.position.z - patrol_range, transform.position.z + patrol_range);
+            patrol_int_x = Random.Range(1,14);
+            patrol_int_y = Random.Range(1,14);
+
+            patrol_int_x = patrol_int_x * 30;
+            patrol_int_y = patrol_int_y * 30;
+
+            patrol_int_x -= 195;
+            patrol_int_y -= 195;
+
+            random_patrol.x = patrol_int_x;
+            random_patrol.z = patrol_int_y;
+            random_patrol.y = 0f;
 
             blocked = Physics.Raycast(random_patrol, -transform.up, 2f, walkable_layers);
             blocked = !blocked;
 
-            if (!blocked)
-            {
-                location = random_patrol;
-                patrol_time = patrol_recovery_time;
-                choosing_patrol = false;
-            }
+            location = random_patrol;
+            patrol_time = patrol_recovery_time;
+            choosing_patrol = false;
             
         }
 
